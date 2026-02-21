@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاهدة الدرس - أكاديمية الدراسات الاجتماعية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* تنسيقات خاصة بصفحة الدرس */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .lesson-sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .lesson-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .lesson-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        .lesson-item:hover {
+            background: #f8f9fa;
+            transform: translateX(-5px);
+        }
+        
+        .lesson-item.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .lesson-item.active a {
+            color: white;
+        }
+        
+        .lesson-item i {
+            margin-left: 10px;
+            width: 20px;
+        }
+        
+        .progress-bar-custom {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-glass">
+        <!-- نفس النافبار -->
+    </nav>
+
+    <section class="lesson-page py-4">
+        <div class="container">
+            <div class="row">
+                <!-- العمود الأيمن - محتوى الدرس -->
+                <div class="col-lg-8">
+                    <!-- عنوان الدرس -->
+                    <nav aria-label="breadcrumb" class="mb-3">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+                            <li class="breadcrumb-item"><a href="courses.html">الكورسات</a></li>
+                            <li class="breadcrumb-item"><a href="#">تاريخ الحضارات القديمة</a></li>
+                            <li class="breadcrumb-item active" id="lesson-title-breadcrumb">مقدمة في التاريخ</li>
+                        </ol>
+                    </nav>
+
+                    <!-- مشغل الفيديو -->
+                    <div class="video-container mb-4">
+                        <video controls poster="images/video-thumbnail.jpg">
+                            <source src="videos/lesson1.mp4" type="video/mp4">
+                            متصفحك لا يدعم تشغيل الفيديو
+                        </video>
+                    </div>
+
+                    <!-- معلومات الدرس -->
+                    <div class="lesson-info bg-white p-4 rounded-3 shadow-sm mb-4">
+                        <h1 id="lesson-title">مقدمة في تاريخ الحضارات القديمة</h1>
+                        <div class="d-flex flex-wrap gap-3 mb-3">
+                            <span><i class="far fa-clock text-primary"></i> 25 دقيقة</span>
+                            <span><i class="fas fa-signal text-primary"></i> مبتدئ</span>
+                            <span><i class="fas fa-calendar text-primary"></i> تم التحديث: 2025</span>
+                        </div>
+                        <p id="lesson-description">في هذا الدرس سنتعرف على مفهوم التاريخ وأهمية دراسته، ونستعرض الحضارات القديمة التي قامت في منطقة الشرق الأوسط.</p>
+                    </div>
+
+                    <!-- محتوى الدرس -->
+                    <div class="lesson-content bg-white p-4 rounded-3 shadow-sm">
+                        <h3 class="mb-3">محتوى الدرس</h3>
+                        <div id="lesson-content-text">
+                            <p>التاريخ هو سجل الأحداث الماضية التي مرت بها البشرية. يدرس التاريخ تطور المجتمعات البشرية والثقافات والحضارات عبر الزمن.</p>
+                            
+                            <h4>أهمية دراسة التاريخ:</h4>
+                            <ul>
+                                <li>فهم الحاضر واستشراف المستقبل</li>
+                                <li>استخلاص العبر والدروس</li>
+                                <li>الحفاظ على الهوية والتراث</li>
+                                <li>فهم تطور البشرية</li>
+                            </ul>
+                            
+                            <h4>أشهر الحضارات القديمة:</h4>
+                            <ul>
+                                <li>الحضارة المصرية القديمة (3100 ق.م - 30 ق.م)</li>
+                                <li>حضارة بلاد الرافدين (4000 ق.م - 539 ق.م)</li>
+                                <li>الحضارة اليونانية (800 ق.م - 146 ق.م)</li>
+                                <li>الحضارة الرومانية (753 ق.م - 476 م)</li>
+                            </ul>
+                            
+                            <div class="alert alert-info mt-4">
+                                <i class="fas fa-lightbulb"></i>
+                                <strong>معلومة مهمة:</strong> أقدم حضارة في التاريخ هي حضارة سومر في بلاد الرافدين (العراق حالياً).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- أزرار التنقل -->
+                    <div class="d-flex justify-content-between mt-4">
+                        <button class="btn btn-outline-primary"><i class="fas fa-arrow-right"></i> الدرس السابق</button>
+                        <button class="btn btn-primary">الدرس التالي <i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+
+                <!-- العمود الأيسر - قائمة الدروس -->
+                <div class="col-lg-4">
+                    <div class="lesson-sidebar">
+                        <h4 class="mb-3">محتوى الكورس</h4>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span>تقدمك</span>
+                            <span id="progress-percent">30%</span>
+                        </div>
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill" style="width: 30%;"></div>
+                        </div>
+                        
+                        <ul class="lesson-list">
+                            <li class="lesson-item active" onclick="loadLesson(1)">
+                                <i class="fas fa-play-circle"></i>
+                                <span>مقدمة في التاريخ (25 دقيقة)</span>
+                            </li>
+                            <li class="lesson-item" onclick="loadLesson(2)">
+                                <i class="fas fa-lock"></i>
+                                <span>الحضارة المصرية القديمة (40 دقيقة)</span>
+                            </li>
+                            <li class="lesson-item" onclick="loadLesson(3)">
+                                <i class="fas fa-lock"></i>
+                                <span>حضارة بلاد الرافدين (35 دقيقة)</span>
+                            </li>
+                            <li class="lesson-item" onclick="loadLesson(4)">
+                                <i class="fas fa-lock"></i>
+                                <span>الحضارة اليونانية (30 دقيقة)</span>
+                            </li>
+                            <li class="lesson-item" onclick="loadLesson(5)">
+                                <i class="fas fa-lock"></i>
+                                <span>الحضارة الرومانية (45 دقيقة)</span>
+                            </li>
+                            <li class="lesson-item" onclick="loadLesson(6)">
+                                <i class="fas fa-lock"></i>
+                                <span>اختبار نهاية الكورس (20 دقيقة)</span>
+                            </li>
+                        </ul>
+                        
+                        <hr>
+                        
+                        <div class="course-info">
+                            <h5>معلومات الكورس</h5>
+                            <p><i class="fas fa-video"></i> 6 دروس</p>
+                            <p><i class="far fa-clock"></i> إجمالي المدة: 3.5 ساعة</p>
+                            <p><i class="fas fa-award"></i> شهادة عند الإكمال</p>
+                            <p><i class="fas fa-download"></i> مواد قابلة للتحميل</p>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="instructor-info">
+                            <h5>المحاضر</h5>
+                            <div class="d-flex align-items-center">
+                                <img src="images/instructor1.jpg" alt="محمد أحمد" class="rounded-circle" width="60" height="60">
+                                <div class="me-3">
+                                    <h6 class="mb-0">د. محمد أحمد</h6>
+                                    <small class="text-muted">أستاذ التاريخ - جامعة القاهرة</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+        <!-- نفس الفوتر -->
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        function loadLesson(id) {
+            // تحديث عنوان الدرس
+            document.getElementById('lesson-title').innerHTML = 'الدرس ' + id;
+            document.getElementById('lesson-title-breadcrumb').innerHTML = 'الدرس ' + id;
+            
+            // تحديث حالة العنصر النشط
+            document.querySelectorAll('.lesson-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // تحديث شريط التقدم
+            const progress = (id / 6) * 100;
+            document.querySelector('.progress-fill').style.width = progress + '%';
+            document.getElementById('progress-percent').innerHTML = Math.round(progress) + '%';
+        }
+    </script>
+</body>
+</html>
