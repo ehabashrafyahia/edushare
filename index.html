@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بصيرة - منصة الدراسات الاجتماعية</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="بصيرة">
+                <span>بصيرة</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="active">الرئيسية</a>
+                <a href="#courses">الرحلات المعرفية</a>
+                <a href="#library">المكتبة التفاعلية</a>
+                <a href="#about">عن المنصة</a>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-outline" onclick="location.href='login.html'">تسجيل الدخول</button>
+                <button class="btn btn-primary" onclick="location.href='login.html?signup=true'">اشترك الآن</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قسم البطل (Hero Section) -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>رحلتك عبر الزمن تبدأ هنا</h1>
+                <p>منصة تعليمية تفاعلية للدراسات الاجتماعية للصفوف من الرابع الابتدائي حتى الأول الثانوي</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" onclick="location.href='login.html?signup=true'">
+                        ابدأ الرحلة مجاناً <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button class="btn btn-outline btn-large" onclick="showDemo()">
+                        شاهد العرض <i class="fas fa-play"></i>
+                    </button>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">+50</span>
+                        <span class="stat-label">رحلة معرفية</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">+10k</span>
+                        <span class="stat-label">طالب</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.8</span>
+                        <span class="stat-label">تقييم المنصة</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/hero-image.png" alt="طلاب يستكشفون التاريخ">
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المميزات -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">لماذا بصيرة؟</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-vr-cardboard"></i>
+                    </div>
+                    <h3>سافر عبر الزمن</h3>
+                    <p>تقنية الواقع المعزز لتجسيد المعالم التاريخية أمام عينيك</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3>خرائط ذكية</h3>
+                    <p>خرائط تفاعلية تتغير حسب الحقبة الزمنية التي تدرسها</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>مساعد بصيرة</h3>
+                    <p>بوت ذكاء اصطناعي يجيب عن أسئلتك التاريخية والجغرافية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>تحديات وأوسمة</h3>
+                    <p>اجمع الأوسمة وأنت تتعلم وتنافس زملاءك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المسارات التعليمية -->
+    <section class="learning-paths" id="courses">
+        <div class="container">
+            <h2 class="section-title">اختر رحلتك المعرفية</h2>
+            <div class="path-tabs">
+                <button class="tab-btn active" onclick="filterPaths('primary')">المرحلة الابتدائية</button>
+                <button class="tab-btn" onclick="filterPaths('middle')">المرحلة الإعدادية</button>
+                <button class="tab-btn" onclick="filterPaths('secondary')">المرحلة الثانوية</button>
+            </div>
+            <div class="paths-grid" id="paths-container">
+                <!-- سيتم تعبئتها بواسطة JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخرائط التفاعلية -->
+    <section class="interactive-map" id="library">
+        <div class="container">
+            <h2 class="section-title">استكشف الخريطة التفاعلية</h2>
+            <div class="map-container">
+                <div id="world-map" class="world-map">
+                    <!-- خريطة SVG تفاعلية -->
+                    <svg viewBox="0 0 1000 500">
+                        <!-- قارات مبسطة للتفاعل -->
+                        <path class="continent" id="africa" d="M300,200 L400,300 L350,400 L250,350 L200,250 Z" data-name="أفريقيا"/>
+                        <path class="continent" id="asia" d="M600,100 L750,150 L700,300 L550,280 L500,180 Z" data-name="آسيا"/>
+                        <path class="continent" id="europe" d="M450,50 L550,80 L500,180 L400,150 Z" data-name="أوروبا"/>
+                        <path class="continent" id="america" d="M100,150 L200,200 L180,300 L80,280 L50,200 Z" data-name="أمريكا"/>
+                    </svg>
+                </div>
+                <div class="map-info" id="map-info">
+                    <h3>اختر قارة لاستكشافها</h3>
+                    <p>انقر على أي قارة لتبدأ الرحلة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>عن بصيرة</h4>
+                    <p>منصة تعليمية تكنولوجية تهدف لجعل الدراسات الاجتماعية مادة حية وتفاعلية</p>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#courses">الرحلات المعرفية</a></li>
+                        <li><a href="#library">المكتبة</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تابعنا</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 بصيرة - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
