@@ -1,194 +1,107 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>منسق التقييمات الأسبوعية</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
-<style>
-body{
-    font-family: "Cairo", Arial, sans-serif;
-    background:#f4f6f9;
-    padding:20px;
-}
-
-.container{
-    max-width:900px;
-    margin:auto;
-}
-
-textarea{
-    width:100%;
-    height:220px;
-    padding:10px;
-    font-size:16px;
-    margin-bottom:15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.actions {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-button{
-    background:#0f172a;
-    color:white;
-    padding:12px 24px;
-    border:none;
-    cursor:pointer;
-    font-size:16px;
-    border-radius:6px;
-    transition: 0.3s;
-}
-
-button:hover{
-    background:#1e293b;
-}
-
-.btn-save {
-    background: #059669; /* لون أخضر للتمييز */
-}
-
-.btn-save:hover {
-    background: #047857;
-}
-
-.paper{
-    background:white;
-    padding:40px;
-    box-shadow:0 0 15px rgba(0,0,0,0.1);
-    border: 1px solid #ddd;
-}
-
-.header-table{
-    width:100%;
-    border-collapse:collapse;
-    margin-bottom:20px;
-    text-align:center;
-}
-
-.header-table td{
-    border:1px solid black;
-    padding:8px;
-    font-weight:bold;
-    font-size: 14px;
-}
-
-.title{
-    text-align:center;
-    font-size:24px;
-    font-weight:bold;
-    margin-bottom:25px;
-    text-decoration: underline;
-}
-
-.content{
-    line-height:2.2;
-    font-size:19px;
-}
-
-.content b{
-    font-weight:bold;
-    color: #000;
-}
-
-@media print{
-    button, textarea, .actions{
-        display:none;
-    }
-    body{
-        background:white;
-        padding: 0;
-    }
-    .paper{
-        box-shadow:none;
-        border: none;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة المؤرخ الصغير - دراسات اجتماعية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Cairo', sans-serif; } </style>
 </head>
+<body class="bg-[#fdfcf0]"> <nav class="bg-white shadow-lg sticky top-0 z-50 border-b-4 border-orange-500">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="text-3xl">🗺️</div>
+                <h1 class="text-2xl font-black text-orange-600 underline decoration-wavy decoration-blue-500">منصة المؤرخ</h1>
+            </div>
+            <div class="hidden md:flex gap-8 text-gray-700 font-bold">
+                <a href="#primary" class="hover:text-orange-500 transition">المرحلة الابتدائية</a>
+                <a href="#preparatory" class="hover:text-blue-500 transition">المرحلة الإعدادية</a>
+                <a href="#" class="hover:text-green-600 transition">خرائط تفاعلية</a>
+            </div>
+            <button class="bg-orange-500 text-white px-6 py-2 rounded-full font-bold hover:bg-orange-600 shadow-md">تسجيل دخول</button>
+        </div>
+    </nav>
 
-<body>
+    <header class="relative bg-blue-600 text-white py-20 px-6 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 flex flex-wrap gap-10 text-6xl">
+            <span>🗿</span> <span>🧭</span> <span>🏺</span> <span>🌍</span> <span>📜</span>
+        </div>
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <h2 class="text-5xl font-black mb-6">رحلة عبر الزمان والمكان 🇪🇬</h2>
+            <p class="text-xl mb-10 opacity-90 max-w-2xl mx-auto">أقوى الشروحات، الخرائط التفاعلية، والاختبارات لمنهج الدراسات الاجتماعية للمرحلتين الابتدائية والإعدادية.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#primary" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl">ابدأ رحلة الابتدائي</a>
+                <a href="#preparatory" class="bg-white text-blue-600 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition shadow-xl border-2 border-blue-100">ابدأ رحلة الإعدادي</a>
+            </div>
+        </div>
+    </header>
 
-<div class="container">
+    <section id="primary" class="max-w-7xl mx-auto py-16 px-4">
+        <div class="flex items-center gap-3 mb-10">
+            <span class="text-4xl">🎒</span>
+            <h3 class="text-3xl font-black text-orange-600">المرحلة الابتدائية (من رابع لـ سادس)</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-3xl p-6 shadow-md border-t-8 border-yellow-400 hover:shadow-2xl transition group">
+                <div class="h-40 bg-orange-50 rounded-2xl mb-4 flex items-center justify-center text-6xl group-hover:scale-110 transition">🏜️</div>
+                <h4 class="font-black text-xl mb-2">البيئات المصرية</h4>
+                <p class="text-gray-500 text-sm mb-4">تعرف على الفرق بين البيئة الزراعية، الصناعية، والساحلية ببساطة.</p>
+                <button class="w-full bg-orange-100 text-orange-700 py-3 rounded-xl font-bold hover:bg-orange-500 hover:text-white transition">مشاهدة الدرس</button>
+            </div>
 
-<h2>منسق التقييمات الذكي 📝</h2>
-<textarea id="inputText" placeholder="ضع هنا نص التقييمات..."></textarea>
+            <div class="bg-white rounded-3xl p-6 shadow-md border-t-8 border-green-400 hover:shadow-2xl transition group">
+                <div class="h-40 bg-green-50 rounded-2xl mb-4 flex items-center justify-center text-6xl group-hover:scale-110 transition">🏛️</div>
+                <h4 class="font-black text-xl mb-2">عجائب بلدنا</h4>
+                <p class="text-gray-500 text-sm mb-4">رحلة لاستكشاف الأهرامات والمعابد والآثار المصرية القديمة.</p>
+                <button class="w-full bg-green-100 text-green-700 py-3 rounded-xl font-bold hover:bg-green-500 hover:text-white transition">مشاهدة الدرس</button>
+            </div>
 
-<div class="actions">
-    <button onclick="generatePaper()">تحويل إلى ورقة منسقة</button>
-    <button id="saveBtn" class="btn-save" onclick="saveAsImage()" style="display:none;">حفظ كصورة PNG</button>
-</div>
+            <div class="bg-white rounded-3xl p-6 shadow-md border-t-8 border-blue-400 hover:shadow-2xl transition group">
+                <div class="h-40 bg-blue-50 rounded-2xl mb-4 flex items-center justify-center text-6xl group-hover:scale-110 transition">🧭</div>
+                <h4 class="font-black text-xl mb-2">أدوات الخريطة</h4>
+                <p class="text-gray-500 text-sm mb-4">تعلم كيف تقرأ الخريطة وتستخدم وردة البوصلة ومقياس الرسم.</p>
+                <button class="w-full bg-blue-100 text-blue-700 py-3 rounded-xl font-bold hover:bg-blue-500 hover:text-white transition">مشاهدة الدرس</button>
+            </div>
+        </div>
+    </section>
 
-<div class="paper" id="output" style="display:none;">
+    <section id="preparatory" class="bg-blue-50 py-16 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center gap-3 mb-10">
+                <span class="text-4xl">🏛️</span>
+                <h3 class="text-3xl font-black text-blue-800">المرحلة الإعدادية (التاريخ والجغرافيا بعمق)</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-lg border-r-8 border-blue-600">
+                    <h4 class="text-2xl font-bold mb-4 flex items-center gap-2">🌍 جغرافيا الوطن العربي</h4>
+                    <p class="text-gray-600 mb-6">دروس تفصيلية عن تضاريس، مناخ، وسكان وطننا العربي الكبير.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2">✅ <span class="text-gray-700 italic underline decoration-blue-200 cursor-pointer hover:text-blue-600">الموقع الفلكي والجغرافي</span></li>
+                        <li class="flex items-center gap-2">✅ <span class="text-gray-700 italic underline decoration-blue-200 cursor-pointer hover:text-blue-600">الثروة الحيوانية والسمكية</span></li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg border-r-8 border-red-600">
+                    <h4 class="text-2xl font-bold mb-4 flex items-center gap-2">⚔️ التاريخ الإسلامي والحديث</h4>
+                    <p class="text-gray-600 mb-6">من السيرة النبوية إلى بناء الدولة المصرية الحديثة.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2">✅ <span class="text-gray-700 italic underline decoration-red-200 cursor-pointer hover:text-red-600">خلفاء الدولة الأموية</span></li>
+                        <li class="flex items-center gap-2">✅ <span class="text-gray-700 italic underline decoration-red-200 cursor-pointer hover:text-red-600">ثورة 23 يوليو المجيدة</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<table class="header-table">
-<tr>
-<td>الفترة: .......................</td>
-<td>التاريخ: .......................</td>
-<td>الفصل: .......................</td>
-<td>رقم التقييم: .......................</td>
-</tr>
-</table>
-
-<div class="title">التقييم الأسبوعي</div>
-
-<div class="content" id="formattedContent"></div>
-
-</div>
-
-</div>
-
-<script>
-function generatePaper(){
-    let text = document.getElementById("inputText").value;
-    if(!text.trim()) { alert("يرجى إدخال نص أولاً"); return; }
-
-    // تحويل رؤوس الأسئلة لبولد تلقائياً
-    const keywords = [
-        "أكمل:", "بم تفسر:", "دلل على صحة العبارة التالية:", 
-        "أعد كتابة العبارة بعد تصويب الخطأ العلمي بها:", 
-        "اكتب نتيجة واحدة ترتبت على:", "اختر الإجابة الصحيحة:", "ما النتائج المترتبة على:"
-    ];
-
-    keywords.forEach(word => {
-        let reg = new RegExp(word, "g");
-        text = text.replace(reg, `<b>${word}</b>`);
-    });
-
-    let formatted = text.replace(/\n/g,"<br>");
-    document.getElementById("formattedContent").innerHTML = formatted;
-    
-    // إظهار الورقة وزر الحفظ
-    document.getElementById("output").style.display = "block";
-    document.getElementById("saveBtn").style.display = "inline-block";
-    
-    // التمرير للأسفل لرؤية النتيجة
-    window.scrollTo({ top: document.getElementById("output").offsetTop, behavior: 'smooth' });
-}
-
-function saveAsImage() {
-    const element = document.getElementById("output");
-    const saveBtn = document.getElementById("saveBtn");
-    
-    saveBtn.innerText = "جاري الحفظ...";
-    
-    html2canvas(element, {
-        scale: 2, // جودة عالية
-        useCORS: true,
-        backgroundColor: "#ffffff"
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'التقييم-الأسبوعي.png';
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-        saveBtn.innerText = "حفظ كصورة PNG";
-    });
-}
-</script>
+    <footer class="bg-gray-900 text-white py-12 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-2xl font-bold mb-4 text-orange-400">منصة المؤرخ 🗺️</p>
+            <p class="text-gray-400">أول منصة متخصصة في تبسيط الدراسات الاجتماعية للطلاب في مصر.</p>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-sm">
+                © 2026 تم التطوير بواسطة [اسمك هنا] - ارفع الكود على GitHub الآن!
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
