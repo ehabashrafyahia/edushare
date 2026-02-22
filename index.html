@@ -13,7 +13,9 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="assets/images/logo.png" alt="بصيرة">
+                <div class="logo-img-placeholder">
+                    <span>ب</span>
+                </div>
                 <span>بصيرة</span>
             </div>
             <div class="nav-links">
@@ -29,7 +31,7 @@
         </div>
     </nav>
 
-    <!-- قسم البطل (Hero Section) -->
+    <!-- قسم البطل (Hero Section) - بدون صور -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
@@ -59,7 +61,8 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="assets/images/hero-image.png" alt="طلاب يستكشفون التاريخ">
+                <!-- بديل الصورة المتحركة -->
+                <div class="hero-image-placeholder"></div>
             </div>
         </div>
     </section>
@@ -101,7 +104,7 @@
         </div>
     </section>
 
-    <!-- قسم المسارات التعليمية -->
+    <!-- قسم المسارات التعليمية - بدون صور -->
     <section class="learning-paths" id="courses">
         <div class="container">
             <h2 class="section-title">اختر رحلتك المعرفية</h2>
@@ -116,24 +119,34 @@
         </div>
     </section>
 
-    <!-- قسم الخرائط التفاعلية -->
+    <!-- قسم الخرائط التفاعلية - بدون صور -->
     <section class="interactive-map" id="library">
         <div class="container">
             <h2 class="section-title">استكشف الخريطة التفاعلية</h2>
             <div class="map-container">
-                <div id="world-map" class="world-map">
-                    <!-- خريطة SVG تفاعلية -->
-                    <svg viewBox="0 0 1000 500">
-                        <!-- قارات مبسطة للتفاعل -->
-                        <path class="continent" id="africa" d="M300,200 L400,300 L350,400 L250,350 L200,250 Z" data-name="أفريقيا"/>
-                        <path class="continent" id="asia" d="M600,100 L750,150 L700,300 L550,280 L500,180 Z" data-name="آسيا"/>
-                        <path class="continent" id="europe" d="M450,50 L550,80 L500,180 L400,150 Z" data-name="أوروبا"/>
-                        <path class="continent" id="america" d="M100,150 L200,200 L180,300 L80,280 L50,200 Z" data-name="أمريكا"/>
+                <div class="map-placeholder">
+                    <svg viewBox="0 0 400 200" width="100%" height="100%">
+                        <!-- قارات مبسطة -->
+                        <circle cx="120" cy="100" r="30" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+                        <text x="120" y="105" text-anchor="middle" fill="white" font-size="12">أفريقيا</text>
+                        
+                        <circle cx="280" cy="70" r="25" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+                        <text x="280" y="75" text-anchor="middle" fill="white" font-size="12">آسيا</text>
+                        
+                        <circle cx="200" cy="50" r="20" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+                        <text x="200" y="55" text-anchor="middle" fill="white" font-size="12">أوروبا</text>
+                        
+                        <circle cx="50" cy="80" r="28" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+                        <text x="50" y="85" text-anchor="middle" fill="white" font-size="12">أمريكا</text>
+                        
+                        <circle cx="320" cy="130" r="22" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+                        <text x="320" y="135" text-anchor="middle" fill="white" font-size="12">أستراليا</text>
                     </svg>
+                    <p style="color: white; margin-top: 10px;">انقر على القارات للاستكشاف</p>
                 </div>
                 <div class="map-info" id="map-info">
                     <h3>اختر قارة لاستكشافها</h3>
-                    <p>انقر على أي قارة لتبدأ الرحلة</p>
+                    <p>انقر على أي قارة في الخريطة لتبدأ الرحلة</p>
                 </div>
             </div>
         </div>
@@ -171,6 +184,278 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // بيانات المسارات مع أيقونات تعويضية (بدون صور)
+        const learningPaths = {
+            primary: [
+                {
+                    id: 1,
+                    title: "رحلة في مصر القديمة",
+                    icon: "🇪🇬",
+                    label: "فرعوني",
+                    color: "egypt",
+                    grade: "الرابع الابتدائي",
+                    duration: "6 دروس",
+                    students: 1250,
+                    progress: 0
+                },
+                {
+                    id: 2,
+                    title: "أعلام الدول العربية",
+                    icon: "🏳️",
+                    label: "جغرافيا",
+                    color: "flags",
+                    grade: "الخامس الابتدائي",
+                    duration: "4 دروس",
+                    students: 980,
+                    progress: 0
+                },
+                {
+                    id: 3,
+                    title: "المواطنة وحقوقي",
+                    icon: "🤝",
+                    label: "مواطنة",
+                    color: "citizen",
+                    grade: "السادس الابتدائي",
+                    duration: "5 دروس",
+                    students: 1100,
+                    progress: 0
+                }
+            ],
+            middle: [
+                {
+                    id: 4,
+                    title: "الحضارة الإسلامية",
+                    icon: "🕌",
+                    label: "تاريخ",
+                    color: "islamic",
+                    grade: "الأول الإعدادي",
+                    duration: "8 دروس",
+                    students: 890,
+                    progress: 0
+                },
+                {
+                    id: 5,
+                    title: "المناخ والنبات الطبيعي",
+                    icon: "🌍",
+                    label: "جغرافيا",
+                    color: "climate",
+                    grade: "الثاني الإعدادي",
+                    duration: "6 دروس",
+                    students: 760,
+                    progress: 0
+                }
+            ],
+            secondary: [
+                {
+                    id: 6,
+                    title: "مصر في العصر الحديث",
+                    icon: "🏛️",
+                    label: "تاريخ",
+                    color: "egypt",
+                    grade: "الأول الثانوي",
+                    duration: "10 دروس",
+                    students: 540,
+                    progress: 0
+                }
+            ]
+        };
+
+        // عرض المسارات حسب التصفية
+        function filterPaths(level) {
+            const container = document.getElementById('paths-container');
+            const paths = learningPaths[level] || learningPaths.primary;
+            
+            // تحديث الأزرار النشطة
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // عرض المسارات بدون صور
+            container.innerHTML = paths.map(path => `
+                <div class="path-card" onclick="startPath(${path.id})">
+                    <div class="path-image-placeholder ${path.color}" data-icon="${path.icon}" data-label="${path.label}">
+                    </div>
+                    <div class="path-content">
+                        <h3 class="path-title">${path.title}</h3>
+                        <div class="path-meta">
+                            <span><i class="fas fa-graduation-cap"></i> ${path.grade}</span>
+                            <span><i class="fas fa-video"></i> ${path.duration}</span>
+                            <span><i class="fas fa-users"></i> ${path.students}</span>
+                        </div>
+                        <div class="path-progress">
+                            <div class="progress-bar" style="width: ${path.progress}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // بدء رحلة معرفية
+        function startPath(pathId) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                window.location.href = `video-player.html?path=${pathId}`;
+            } else {
+                window.location.href = 'login.html?redirect=video-player.html';
+            }
+        }
+
+        // عرض النسخة التجريبية
+        function showDemo() {
+            const modal = document.createElement('div');
+            modal.className = 'demo-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-btn" onclick="this.parentElement.parentElement.remove()">&times;</span>
+                    <h2>شاهد كيف تعمل بصيرة</h2>
+                    <div class="video-thumbnail-placeholder" data-duration="02:30" style="height: 300px;">
+                    </div>
+                    <p style="text-align: center; margin-top: 15px; color: #666;">
+                        فيديو تعريفي عن المنصة - مدته دقيقتان ونصف
+                    </p>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                .demo-modal {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.8);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 2000;
+                }
+                .modal-content {
+                    background: white;
+                    padding: 30px;
+                    border-radius: 15px;
+                    max-width: 600px;
+                    width: 90%;
+                    position: relative;
+                }
+                .close-btn {
+                    position: absolute;
+                    top: 10px;
+                    right: 20px;
+                    font-size: 30px;
+                    cursor: pointer;
+                    color: #666;
+                }
+                .close-btn:hover {
+                    color: #333;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // الخريطة التفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            filterPaths('primary');
+            
+            // إضافة تفاعل للخريطة
+            const circles = document.querySelectorAll('.map-placeholder circle');
+            const mapInfo = document.getElementById('map-info');
+            
+            const continentsData = {
+                'أفريقيا': {
+                    countries: 54,
+                    population: '1.3 مليار',
+                    history: 'مهد الحضارة الإنسانية',
+                    landmarks: 'الأهرامات'
+                },
+                'آسيا': {
+                    countries: 48,
+                    population: '4.6 مليار',
+                    history: 'حضارات الصين والهند',
+                    landmarks: 'سور الصين العظيم'
+                },
+                'أوروبا': {
+                    countries: 44,
+                    population: '750 مليون',
+                    history: 'الحضارة اليونانية والرومانية',
+                    landmarks: 'برج إيفل'
+                },
+                'أمريكا': {
+                    countries: 35,
+                    population: '1 مليار',
+                    history: 'حضارات المايا والإنكا',
+                    landmarks: 'تمثال الحرية'
+                },
+                'أستراليا': {
+                    countries: 1,
+                    population: '25 مليون',
+                    history: 'السكان الأصليون',
+                    landmarks: 'دار الأوبرا'
+                }
+            };
+            
+            circles.forEach((circle, index) => {
+                const text = circle.nextElementSibling;
+                const continentName = text.textContent;
+                
+                circle.addEventListener('click', function() {
+                    const data = continentsData[continentName];
+                    
+                    mapInfo.innerHTML = `
+                        <h3>${continentName}</h3>
+                        <ul class="continent-details">
+                            <li><span class="detail-label">عدد الدول:</span> <span class="detail-value">${data.countries}</span></li>
+                            <li><span class="detail-label">عدد السكان:</span> <span class="detail-value">${data.population}</span></li>
+                            <li><span class="detail-label">لمحة تاريخية:</span> <span class="detail-value">${data.history}</span></li>
+                            <li><span class="detail-label">أشهر المعالم:</span> <span class="detail-value">${data.landmarks}</span></li>
+                        </ul>
+                        <button class="btn btn-primary" style="margin-top: 20px; width: 100%;" onclick="startContinentJourney('${continentName}')">
+                            ابدأ رحلة استكشاف ${continentName}
+                        </button>
+                    `;
+                    
+                    // تغيير لون الدائرة
+                    circles.forEach(c => c.setAttribute('fill', 'rgba(255,255,255,0.2)'));
+                    this.setAttribute('fill', 'rgba(52, 152, 219, 0.5)');
+                });
+                
+                circle.addEventListener('mouseover', function() {
+                    this.setAttribute('fill', 'rgba(52, 152, 219, 0.5)');
+                });
+                
+                circle.addEventListener('mouseout', function() {
+                    if (!this.hasAttribute('data-selected')) {
+                        this.setAttribute('fill', 'rgba(255,255,255,0.2)');
+                    }
+                });
+            });
+        });
+
+        function startContinentJourney(continent) {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if (user) {
+                alert(`سيتم توجيهك إلى رحلة استكشاف ${continent}`);
+            } else {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
