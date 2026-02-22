@@ -18,14 +18,14 @@ body{
 
 textarea{
     width:100%;
-    height:200px;
+    height:220px;
     padding:10px;
     font-size:16px;
     margin-bottom:15px;
 }
 
 button{
-    background:#1e3a8a;
+    background:#0f172a;
     color:white;
     padding:10px 20px;
     border:none;
@@ -35,7 +35,7 @@ button{
 }
 
 button:hover{
-    background:#162c6b;
+    background:#1e293b;
 }
 
 .paper{
@@ -49,6 +49,7 @@ button:hover{
     width:100%;
     border-collapse:collapse;
     margin-bottom:20px;
+    text-align:center;
 }
 
 .header-table td{
@@ -65,8 +66,12 @@ button:hover{
 }
 
 .content{
-    line-height:1.8;
+    line-height:2;
     font-size:18px;
+}
+
+.content b{
+    font-weight:bold;
 }
 
 @media print{
@@ -95,13 +100,14 @@ button:hover{
 
 <table class="header-table">
 <tr>
-<td>الفترة: ..............................</td>
-<td>التاريخ: ..............................</td>
-<td>الصف: ..............................</td>
+<td>الفترة: .......................</td>
+<td>التاريخ: .......................</td>
+<td>الفصل: .......................</td>
+<td>رقم التقييم: .......................</td>
 </tr>
 </table>
 
-<div class="title">التقييمات الأسبوعية</div>
+<div class="title">التقييم الأسبوعي</div>
 
 <div class="content" id="formattedContent"></div>
 
@@ -112,6 +118,14 @@ button:hover{
 <script>
 function generatePaper(){
     let text = document.getElementById("inputText").value;
+
+    // تحويل رؤوس الأسئلة لبولد تلقائياً
+    text = text.replace(/أكمل:/g, "<b>أكمل:</b>");
+    text = text.replace(/بم تفسر:/g, "<b>بم تفسر:</b>");
+    text = text.replace(/دلل على صحة العبارة التالية:/g, "<b>دلل على صحة العبارة التالية:</b>");
+    text = text.replace(/أعد كتابة العبارة بعد تصويب الخطأ العلمي بها:/g, "<b>أعد كتابة العبارة بعد تصويب الخطأ العلمي بها:</b>");
+    text = text.replace(/اكتب نتيجة واحدة ترتبت على:/g, "<b>اكتب نتيجة واحدة ترتبت على:</b>");
+
     let formatted = text.replace(/\n/g,"<br>");
     document.getElementById("formattedContent").innerHTML = formatted;
     document.getElementById("output").style.display = "block";
