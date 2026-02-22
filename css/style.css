@@ -42,10 +42,6 @@ body {
     color: #2c3e50;
 }
 
-.logo img {
-    height: 40px;
-}
-
 .nav-links {
     display: flex;
     gap: 30px;
@@ -117,6 +113,12 @@ body {
     font-size: 18px;
 }
 
+.btn-block {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+}
+
 /* قسم البطل */
 .hero {
     padding: 60px 0;
@@ -167,16 +169,6 @@ body {
 .stat-label {
     font-size: 14px;
     opacity: 0.8;
-}
-
-.hero-image img {
-    width: 100%;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
 }
 
 /* المميزات */
@@ -295,24 +287,6 @@ body {
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 
-.path-image {
-    height: 160px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.path-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #3498db;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-}
-
 .path-content {
     padding: 20px;
 }
@@ -330,6 +304,7 @@ body {
     margin-bottom: 15px;
     font-size: 14px;
     color: #666;
+    flex-wrap: wrap;
 }
 
 .path-meta i {
@@ -363,27 +338,6 @@ body {
     background: #f8f9fa;
     border-radius: 15px;
     padding: 30px;
-}
-
-.world-map {
-    background: #e3f2fd;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.continent {
-    fill: #3498db;
-    opacity: 0.7;
-    stroke: white;
-    stroke-width: 2;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.continent:hover {
-    opacity: 1;
-    fill: #2980b9;
-    transform: scale(1.02);
 }
 
 .map-info {
@@ -508,6 +462,406 @@ body {
     font-size: 14px;
 }
 
+/* ========== بدائل الصور ========== */
+
+/* بديل شعار المنصة */
+.logo-img-placeholder {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+}
+
+.logo-img-placeholder span {
+    transform: rotate(10deg);
+}
+
+/* بديل صورة البطل (Hero) */
+.hero-image-placeholder {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #3498db, #9b59b6, #e74c3c);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    animation: gradientShift 5s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-image-placeholder::before {
+    content: '📚';
+    position: absolute;
+    font-size: 120px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero-image-placeholder::after {
+    content: '🗺️ ⏳ 🏛️';
+    position: absolute;
+    font-size: 40px;
+    bottom: 20px;
+    right: 20px;
+    opacity: 0.8;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, -60%); }
+}
+
+/* بطاقات المسارات التعليمية */
+.path-image-placeholder {
+    height: 160px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: rgba(255,255,255,0.3);
+    overflow: hidden;
+}
+
+.path-image-placeholder::before {
+    content: attr(data-icon);
+    font-size: 80px;
+    position: absolute;
+    opacity: 0.2;
+    transform: rotate(10deg);
+}
+
+.path-image-placeholder::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+/* ألوان مختلفة للبطاقات */
+.path-image-placeholder.egypt {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.path-image-placeholder.flags {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+.path-image-placeholder.citizen {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.path-image-placeholder.islamic {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+}
+
+.path-image-placeholder.climate {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+/* بديل صورة الخريطة */
+.map-placeholder {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-placeholder svg {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.map-placeholder text {
+    fill: rgba(255,255,255,0.5);
+    font-size: 12px;
+}
+
+.map-placeholder .continent-text {
+    fill: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* أيقونات تعويضية */
+.icon-placeholder {
+    width: 60px;
+    height: 60px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+/* خلفيات متدرجة للصفحات */
+.gradient-bg-1 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-bg-2 {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.gradient-bg-3 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* أشكال هندسية للخلفية */
+.bg-pattern {
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-pattern::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+}
+
+/* أيقونات المواد الدراسية */
+.subject-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    margin-left: 10px;
+}
+
+.subject-icon.history {
+    background: #f39c12;
+}
+
+.subject-icon.geography {
+    background: #27ae60;
+}
+
+.subject-icon.citizenship {
+    background: #e74c3c;
+}
+
+/* بطاقات إحصائية */
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 15px;
+    color: #3498db;
+}
+
+/* خلفيات الفيديو */
+.video-frame-placeholder {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    padding-top: 56.25%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+.video-frame-placeholder::before {
+    content: '▶️';
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 2;
+}
+
+.video-frame-placeholder:hover::before {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 1;
+}
+
+.video-frame-placeholder::after {
+    content: 'مشاهدة الفيديو';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    z-index: 2;
+    white-space: nowrap;
+}
+
+.video-thumbnail-placeholder {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-thumbnail-placeholder::before {
+    content: '▶️';
+    font-size: 50px;
+    color: white;
+    opacity: 0.8;
+    transition: all 0.3s;
+}
+
+.video-thumbnail-placeholder:hover::before {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.video-thumbnail-placeholder::after {
+    content: attr(data-duration);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* وسام الإنجاز */
+.badge-placeholder {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 15px;
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+    color: white;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(241, 196, 15, 0.3);
+}
+
+.badge-placeholder i {
+    font-size: 16px;
+}
+
+/* بطاقة المعلم */
+.instructor-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.instructor-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3498db, #9b59b6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.instructor-info h4 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.instructor-info p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* تنسيقات إضافية */
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* تصميم متجاوب */
 @media (max-width: 768px) {
     .navbar .container {
@@ -522,6 +876,11 @@ body {
         justify-content: center;
     }
     
+    .nav-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
     .hero .container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -529,10 +888,12 @@ body {
     
     .hero-buttons {
         justify-content: center;
+        flex-wrap: wrap;
     }
     
     .stats {
         justify-content: center;
+        flex-wrap: wrap;
     }
     
     .map-container {
@@ -541,5 +902,56 @@ body {
     
     .path-tabs {
         flex-wrap: wrap;
+    }
+    
+    .hero-image-placeholder {
+        height: 300px;
+    }
+    
+    .hero-image-placeholder::before {
+        font-size: 80px;
+    }
+    
+    .hero-image-placeholder::after {
+        font-size: 24px;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .instructor-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .hero-content h1 {
+        font-size: 32px;
+    }
+    
+    .btn-large {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+    
+    .stats {
+        gap: 20px;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+    
+    .feature-card {
+        padding: 20px;
+    }
+    
+    .path-meta {
+        flex-direction: column;
+        gap: 8px;
     }
 }
