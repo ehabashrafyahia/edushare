@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>منسق التقييمات الأسبوعية</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <style>
 body{
@@ -22,27 +23,44 @@ textarea{
     padding:10px;
     font-size:16px;
     margin-bottom:15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 button{
     background:#0f172a;
     color:white;
-    padding:10px 20px;
+    padding:12px 24px;
     border:none;
     cursor:pointer;
     font-size:16px;
     border-radius:6px;
+    transition: 0.3s;
 }
 
 button:hover{
     background:#1e293b;
 }
 
+.btn-save {
+    background: #059669; /* لون أخضر للتمييز */
+}
+
+.btn-save:hover {
+    background: #047857;
+}
+
 .paper{
     background:white;
-    padding:30px;
-    margin-top:30px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    padding:40px;
+    box-shadow:0 0 15px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
 }
 
 .header-table{
@@ -56,33 +74,38 @@ button:hover{
     border:1px solid black;
     padding:8px;
     font-weight:bold;
+    font-size: 14px;
 }
 
 .title{
     text-align:center;
-    font-size:22px;
+    font-size:24px;
     font-weight:bold;
-    margin-bottom:20px;
+    margin-bottom:25px;
+    text-decoration: underline;
 }
 
 .content{
-    line-height:2;
-    font-size:18px;
+    line-height:2.2;
+    font-size:19px;
 }
 
 .content b{
     font-weight:bold;
+    color: #000;
 }
 
 @media print{
-    button, textarea{
+    button, textarea, .actions{
         display:none;
     }
     body{
         background:white;
+        padding: 0;
     }
     .paper{
         box-shadow:none;
+        border: none;
     }
 }
 </style>
@@ -92,9 +115,13 @@ button:hover{
 
 <div class="container">
 
-<h2>انسخ النص هنا 👇</h2>
+<h2>منسق التقييمات الذكي 📝</h2>
 <textarea id="inputText" placeholder="ضع هنا نص التقييمات..."></textarea>
-<button onclick="generatePaper()">تحويل إلى ورقة منسقة</button>
+
+<div class="actions">
+    <button onclick="generatePaper()">تحويل إلى ورقة منسقة</button>
+    <button id="saveBtn" class="btn-save" onclick="saveAsImage()" style="display:none;">حفظ كصورة PNG</button>
+</div>
 
 <div class="paper" id="output" style="display:none;">
 
@@ -118,17 +145,48 @@ button:hover{
 <script>
 function generatePaper(){
     let text = document.getElementById("inputText").value;
+    if(!text.trim()) { alert("يرجى إدخال نص أولاً"); return; }
 
     // تحويل رؤوس الأسئلة لبولد تلقائياً
-    text = text.replace(/أكمل:/g, "<b>أكمل:</b>");
-    text = text.replace(/بم تفسر:/g, "<b>بم تفسر:</b>");
-    text = text.replace(/دلل على صحة العبارة التالية:/g, "<b>دلل على صحة العبارة التالية:</b>");
-    text = text.replace(/أعد كتابة العبارة بعد تصويب الخطأ العلمي بها:/g, "<b>أعد كتابة العبارة بعد تصويب الخطأ العلمي بها:</b>");
-    text = text.replace(/اكتب نتيجة واحدة ترتبت على:/g, "<b>اكتب نتيجة واحدة ترتبت على:</b>");
+    const keywords = [
+        "أكمل:", "بم تفسر:", "دلل على صحة العبارة التالية:", 
+        "أعد كتابة العبارة بعد تصويب الخطأ العلمي بها:", 
+        "اكتب نتيجة واحدة ترتبت على:", "اختر الإجابة الصحيحة:", "ما النتائج المترتبة على:"
+    ];
+
+    keywords.forEach(word => {
+        let reg = new RegExp(word, "g");
+        text = text.replace(reg, `<b>${word}</b>`);
+    });
 
     let formatted = text.replace(/\n/g,"<br>");
     document.getElementById("formattedContent").innerHTML = formatted;
+    
+    // إظهار الورقة وزر الحفظ
     document.getElementById("output").style.display = "block";
+    document.getElementById("saveBtn").style.display = "inline-block";
+    
+    // التمرير للأسفل لرؤية النتيجة
+    window.scrollTo({ top: document.getElementById("output").offsetTop, behavior: 'smooth' });
+}
+
+function saveAsImage() {
+    const element = document.getElementById("output");
+    const saveBtn = document.getElementById("saveBtn");
+    
+    saveBtn.innerText = "جاري الحفظ...";
+    
+    html2canvas(element, {
+        scale: 2, // جودة عالية
+        useCORS: true,
+        backgroundColor: "#ffffff"
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'التقييم-الأسبوعي.png';
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        saveBtn.innerText = "حفظ كصورة PNG";
+    });
 }
 </script>
 
